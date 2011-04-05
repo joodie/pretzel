@@ -5,7 +5,7 @@ Combine predicates into new ones, plus a bunch of predicates on strings.
 
 ## Usage
 
-   (looks-like-email? "foo@example.com")
+`   (looks-like-email? "foo@example.com")
    (natural? "1234")
    (integer? "-123213")
    (web-url "http://foo.bar/somewhere")
@@ -16,7 +16,7 @@ Combine predicates into new ones, plus a bunch of predicates on strings.
    ((every-p?
      natural
      #(length % 2 3)
-    "123")
+    "123"))`
 
 ## License
 
