@@ -53,3 +53,9 @@ Note that this will mean any URL valid according to java.net.URL"
 People with email at a TLD probably have other mail addresses too"
   [^String s]
   (re-matches #"\A[^\s@]+@[^\s@]+\.[^\s@]+\z" s))
+
+(defn looks-like-phone?
+  "a phone number may start with a + sign, followed by
+any number of digits, spaces, dashes and parentheses."
+  [^String s]
+  (re-matches #"\A\+?[\s\d\(\)-]+" s))
