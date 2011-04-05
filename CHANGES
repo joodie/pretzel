@@ -1,0 +1,4 @@
+0.2.0 - API Change: predicates in pretzel.strings now should have the
+        string argument last.
+
+0.1.0 - initial releas
