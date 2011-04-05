@@ -58,4 +58,4 @@ People with email at a TLD probably have other mail addresses too"
   "a phone number may start with a + sign, followed by
 any number of digits, spaces, dashes and parentheses."
   [^String s]
-  (re-matches #"\A\+?[\s\d\(\)-]+" s))
+  (re-matches #"\A\+?[\s\d\(\)-]+\z" s))
