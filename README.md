@@ -7,21 +7,23 @@ Combine predicates into new ones, plus a bunch of predicates on strings.
 
 Get the code from clojars: http://clojars.org/pretzel
 
-    (use 'pretzel.strings)
+    (require '[pretzel.strings :as str])
     
-    (looks-like-email? "foo@example.com")
-    (natural? "1234")
-    (integer? "-123213")
-    (web-url "http://foo.bar/somewhere")
-    (hex? "deadb33f")
-    (length? 3 "bla")
-    (length? 2 4 "bla)
+    (str/looks-like-email? "foo@example.com")
+    (str/natural? "1234")
+    (str/integer? "-123213")             
+    (str/hex? "deadb33f")
+    (str/length? 3 "bla")
+    (str/length? 2 4 "bla")
+    (str/web-url? "http://foo.bar/somewhere")
+    (str/looks-like-email? "bla@example.com")
+    (str/looks-like-phone? "+ (020) 213213-2323")
 
     (use 'pretzel.combine)
     
     ((every-p?
-      natural
-      (partial length 2 3))
+      str/natural?
+      (partial str/length 2 3))
      "123")
       
 ## License
