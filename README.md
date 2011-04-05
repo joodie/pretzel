@@ -10,12 +10,12 @@ Combine predicates into new ones, plus a bunch of predicates on strings.
     (integer? "-123213")
     (web-url "http://foo.bar/somewhere")
     (hex? "deadb33f")
-    (length? "bla" 3)
-    (length? "bla" 2 4)
+    (length? 3 "bla")
+    (length? 2 4 "bla)
    
     ((every-p?
       natural
-      #(length % 2 3))
+      (partial length 2 3))
      "123")
       
 ## License

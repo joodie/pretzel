@@ -5,9 +5,9 @@
 
 (defn length?
   "true if length of string s is len or within the range [min ... max]"
-  ([^String s len]
+  ([^String len s]
      (= (.length s) len))
-  ([^String s min max]
+  ([^String min max s]
      (<= min (.length s) max)))
 
 (defn natural?
