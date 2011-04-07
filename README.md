@@ -12,8 +12,8 @@ Get the code from clojars: http://clojars.org/pretzel
     (str/natural? "1234")
     (str/integer? "-123213")             
     (str/hex? "deadb33f")
-    (str/length? 3 "bla")
-    (str/length? 2 4 "bla")
+    ((str/length 3) "bla")
+    ((str/length 2 4) "bla")
     (str/web-url? "http://foo.bar/somewhere")
 
     (str/looks-like-email? "bla@example.com")
@@ -23,18 +23,18 @@ Get the code from clojars: http://clojars.org/pretzel
     
     ((every-p?
       str/natural?
-      (partial str/length 2 3))
+      (str/length 2 3))
      "123")
-     
+
 ## API
 
 ### strings
 
 Functions in `pretzel.strings` all operate on strings. Functions with
 names ending in "?" should be real predicates - that is; they return
-strictly `true` or `false`. Predicates in this library take the "value
-to be tested" as the last argument. For functions in
-`pretzel.strings`, that means that the string argument is last.
+strictly `true` or `false`. Predicates that require additional
+parameters are generated as curried functions. See
+`pretzel.string/length` for an example.
 
 Functions that are named `looks-like-*` are approximations and may
 yield false positives and false negatives. The strategy is to minimize
@@ -48,6 +48,7 @@ the same argument(s) into a new predicate. Currently, the combinations
 are based on the clojure.core combinations `some`, `every?`,
 `not-any?` and `not-every?`. Note that, since `some` isn't a
 predicate, `some-p` is not a strict predicate either.
+
 
 ## Open development
 

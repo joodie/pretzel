@@ -1,3 +1,8 @@
+next.version
+      - switch to curried functions for string predicates
+        that require more than one argument
+      - added a few more test
+
 0.2.2 - fix phone number regex to check whole string
       - made ? predicates really return false or true
       - fixed examples in readme

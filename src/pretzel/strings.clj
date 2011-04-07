@@ -5,12 +5,14 @@
            java.net.MalformedURLException
            java.util.regex.Pattern))
 
-(defn length?
-  "true if length of string s is len or within the range [min ... max]"
-  ([^String len s]
-     (= (.length s) len))
-  ([^String min max s]
-     (<= min (.length s) max)))
+(defn length
+  "return a predicate that's true if length of string s is len
+ or within the range [min ... max]"
+  ([len]
+     (fn [^String s] (= (.length s) len)))
+  ([min max]
+     (fn [^String s]
+       (<= min (.length s) max))))
 
 (defn- re-matches?
   "Like re-matches, only returns true or false"
