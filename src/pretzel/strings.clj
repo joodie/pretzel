@@ -17,7 +17,8 @@
 (defn- re-matches?
   "Like re-matches, only returns true or false"
   [^Pattern r ^String s]
-  (if (re-matches r s)
+  (if (and (string? s)
+           (re-matches r s))
     true
     false))
 
@@ -70,3 +71,23 @@ People with email at a TLD probably have other mail addresses too"
 any number of digits, spaces, dashes and parentheses."
   [^String s]
   (re-matches? #"\A\+?[\s\d\(\)-]+\z" s))
+
+(defn uuid?
+  "java.util.UUID formed string"
+  [s]
+  (boolean
+   (re-matches #"^[0-9a-f]+-[0-9a-f]+-[0-9a-f]+-[0-9a-f]+-[0-9a-f]+$" s)))
+
+(defn char-range
+  "Range of char `a` to `z` inclusive"
+  [a z]
+  (range (int a) (inc (int z))))
+
+(def ^{:doc "Valid chars in base64 encoding"}
+   base64-chars
+  (into #{} (map char (concat (char-range \a \z) (char-range  \A \Z) (char-range \0 \9) [\+ \/ \= \newline \return]))))
+
+(defn looks-like-base64?
+  "First 1000 chars are valid base64 chars."
+  [s]
+  (every? base64-chars (take 1000 (seq s))))

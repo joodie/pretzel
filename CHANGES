@@ -1,4 +1,5 @@
-next.version
+0.2.3 - added looks-like-base64?
+      - added uuid?
       - switch to curried functions for string predicates
         that require more than one argument
       - added a few more test
